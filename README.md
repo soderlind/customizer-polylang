@@ -2,7 +2,7 @@
 
 <img src="assets/customizer-polylang.gif" />
 
-This add-in gives you full [Polylang](https://wordpress.org/plugins/polylang/) support in WordPress customizer. By full support I mean that you customize each language site differently.
+This add-in gives you full [Polylang](https://wordpress.org/plugins/polylang/) support in WordPress customizer. By full support I mean that you can customize each language site differently.
 
 For backward compatibility I've elected to not use customizer changesets (this time).
 
