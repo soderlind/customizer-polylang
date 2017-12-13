@@ -17,7 +17,8 @@ For backward compatibility I've elected to not use customizer changesets (this t
 ## Install
 1. Clone or download this repository into your child theme root folder
 1. In your child theme functions.php add customizer-polylang.php
-	`require_once get_stylesheet_directory_uri()  '/customizer-polylang.php';`
+   
+   `require_once get_stylesheet_directory_uri()  '/customizer-polylang.php';`
 
 # Credits
 
