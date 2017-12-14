@@ -4,7 +4,7 @@
 
 This add-in gives you full [Polylang](https://wordpress.org/plugins/polylang/) support in WordPress customizer. By full support I mean that you can customize each language site differently.
 
-For backward compatibility I've elected to not use customizer changesets (this time).
+For backward compatibility I've elected to not use [customizer changesets](https://github.com/xwp/wp-customize-locale-changesets) (this time).
 
 ## Prerequisite
 
