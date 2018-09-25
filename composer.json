@@ -1,6 +1,6 @@
 {
   "name": "soderlind/customizer-polylang",
   "autoload": {
-      "files": ["customizer-polylang/customizer-polylang.php"]
+      "files": ["customizer-polylang.php"]
   }
 }
