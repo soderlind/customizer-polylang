@@ -1,7 +1,6 @@
 {
   "name": "soderlind/customizer-polylang",
   "autoload": {
-      "files": ["customizer-polylang.php"],
-      "exclude-from-classmap": ["assets/customizer-polylang.gif"]
+      "files": ["customizer-polylang.php"]      
   }
 }
