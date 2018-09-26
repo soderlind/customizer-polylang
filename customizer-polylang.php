@@ -62,7 +62,7 @@ class CustomizerPolylang implements CustimizerPolylangInterface {
 			}
 		}
 
-		foreach ( $option_keys as $option_key ) {
+		foreach ( $data['options'] as $option_key ) {
 			$option_value = get_option( $option_key );
 			if ( $option_value ) {
 				$data['options'][ $option_key ] = $option_value;
