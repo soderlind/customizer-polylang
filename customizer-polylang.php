@@ -138,7 +138,8 @@ class CustomizerPolylang implements CustimizerPolylangInterface {
 	public static function add_lang_to_customizer_previewer() {
 		if ( function_exists( 'pll_current_language' ) ) {
 			$handle    = 'dss-add-lang-to-template';
-			$src       = get_stylesheet_directory_uri() . '/js/customizer-polylang.js';
+			$js_path_url = trailingslashit( apply_filters( 'scp_js_path_url', get_stylesheet_directory_uri() . '/js/' ) );
+			$src       = $js_path_url . '/customizer-polylang.js';
 			$deps      = [ 'customize-controls' ];
 			$version   = rand();
 			$in_footer = 1;

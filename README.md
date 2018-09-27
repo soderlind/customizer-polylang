@@ -19,6 +19,29 @@ For backward compatibility I've elected to not use [customizer changesets](https
 1. In your child theme functions.php add customizer-polylang.php
    
    `require_once get_stylesheet_directory() . '/customizer-polylang.php';`
+   
+## Package Installation (via Composer)
+
+To install this package, edit your `composer.json` file:
+
+```js
+"repositories": [{
+	"type": "vcs",
+	"url": "https://github.com/soderlind/customizer-polylang"
+}],
+"require": {
+	"soderlind/customizer-polylang":"dev-master"
+}
+```
+
+Before using the require_once "vendor/autoload.php" add this filter to setup the js path:
+
+```php
+add_filter( 'scp_js_path_url', function ( $path_url ) {
+	$path_url = get_stylesheet_directory_uri() . '/vendor/soderlind/customizer-polylang/js';
+	return $path_url;
+} );
+```
 
 # Credits
 
