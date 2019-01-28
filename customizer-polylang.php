@@ -52,7 +52,6 @@ class CustomizerPolylang implements CustimizerPolylangInterface {
 					case stristr( $key, 'widget_' ):
 					case stristr( $key, 'sidebars_' ):
 					case stristr( $key, 'nav_menus_' ):
-						continue;
 						break;
 
 					default:
