@@ -1,5 +1,7 @@
 # Add Polylang to WordPress Customizer
 
+## (February 2019) Refactored by [Peder Andreas Nielsen](https://github.com/pederan) at [Dekode](https://en.dekode.no/?noredirect=en_US)
+
 <img src="assets/customizer-polylang.gif" />
 
 This add-in gives you full [Polylang](https://wordpress.org/plugins/polylang/) support in WordPress customizer. By full support I mean that you customize each language site differently.
@@ -13,6 +15,12 @@ For backward compatibility I've elected to not use customizer changesets (this t
 1. If you have a static front page:
 	1. Create a front page per language.
 	1. In Admin->Settings-Reading, per language, select the front page.
+1. Expect customizer to use setting type = theme_mod (the customizer default) as in:
+```php
+$wp_customize->add_setting( 'setting_id', [
+	'type' => 'theme_mod', // the default, you don't have to set this
+ ] );
+```
 
 ## Install
 1. Clone or download this repository into your child theme root folder
