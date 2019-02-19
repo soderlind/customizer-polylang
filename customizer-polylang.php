@@ -26,18 +26,13 @@ class Customizer_Polylang {
 	/**
 	 * Static factory
 	 *
-	 * @link https://carlalexander.ca/static-factory-method-pattern-wordpress/
+	 * @link https://carlalexander.ca/static-factory-method-pattern-wordpress/, https://carlalexander.ca/designing-class-wordpress-hooks/
 	 *
 	 * @return void
 	 */
 	public static function init() {
-		return new self();
-	}
+		$self = new self();
 
-	/**
-	 * Constructor.
-	 */
-	private function __construct() {
 		/**
 		 * Force "The language is set from content" (in Language->Settings->URL modifications)
 		 */
@@ -51,24 +46,30 @@ class Customizer_Polylang {
 		 */
 		add_filter( 'pll_preferred_language', '__return_false' );
 
-		\add_action( 'customize_controls_enqueue_scripts', [ $this, 'add_lang_to_customizer_previewer' ], 9 );
-		\add_action( 'wp_before_admin_bar_render', [ $this, 'on_wp_before_admin_bar_render' ], 100 );
-		\add_action( 'admin_menu', [ $this, 'on_admin_menu' ], 100 );
+		\add_action( 'customize_controls_enqueue_scripts', [ $self, 'add_lang_to_customizer_previewer' ], 9 );
+		\add_action( 'wp_before_admin_bar_render', [ $self, 'on_wp_before_admin_bar_render' ], 100 );
+		\add_action( 'admin_menu', [ $self, 'on_admin_menu' ], 100 );
 
 		$theme_stylesheet_slug = get_option( 'stylesheet' );
 		$option_types          = [ 'blogname', 'blogdescription', 'site_icon' ];
 
 		// Get theme mod options.
-		add_filter( 'option_theme_mods_' . $theme_stylesheet_slug, [ $this, 'on_option_theme_mods_get' ], 10, 1 );
+		add_filter( 'option_theme_mods_' . $theme_stylesheet_slug, [ $self, 'on_option_theme_mods_get' ], 10, 1 );
 		// Update theme mod options.
-		add_filter( 'pre_update_option_theme_mods_' . $theme_stylesheet_slug, [ $this, 'on_option_theme_mods_update' ], 10, 2 );
+		add_filter( 'pre_update_option_theme_mods_' . $theme_stylesheet_slug, [ $self, 'on_option_theme_mods_update' ], 10, 2 );
 
 		foreach ( $option_types as $option_type ) {
-			add_filter( 'pre_option_' . $option_type, [ $this, 'on_wp_option_get' ], 10, 3 ); // get_option hook.
-			add_filter( 'pre_update_option_' . $option_type, [ $this, 'on_wp_option_update' ], 10, 3 ); // update_option hook.
+			add_filter( 'pre_option_' . $option_type, [ $self, 'on_wp_option_get' ], 10, 3 ); // get_option hook.
+			add_filter( 'pre_update_option_' . $option_type, [ $self, 'on_wp_option_update' ], 10, 3 ); // update_option hook.
 		}
 
+		return $self;
 	}
+
+	/**
+	 * Constructor.
+	 */
+	private function __construct() {}
 
 	/**
 	 * Helper to fetch custom customizer db content.
