@@ -236,7 +236,7 @@ class Customizer_Polylang {
 	public function add_lang_to_customizer_previewer() {
 
 		$handle    = 'dss-add-lang-to-template';
-		$src       = get_template_directory_uri() . '/inc/customizer/assets/js/polylang-customizer.js';
+		$src       = get_stylesheet_directory_uri() . '/inc/customizer/assets/js/polylang-customizer.js';
 		$deps      = [ 'customize-controls' ];
 		$version   = rand();
 		$in_footer = 1;
