@@ -25,7 +25,7 @@ $wp_customize->add_setting( 'setting_id', [
 ## Install
 1. Clone or download this repository into your child theme root folder
 1. In your child theme functions.php add customizer-polylang.php
-	`require_once get_stylesheet_directory_uri()  '/customizer-polylang.php';`
+	`require_once get_stylesheet_directory() . '/customizer-polylang.php';`
 
 # Credits
 
