@@ -191,6 +191,13 @@ class Customizer_Polylang {
 			$value = wp_parse_args( $data['mods'], $value );
 		}
 
+		// Remove members with integer key from mods.
+		foreach ( $value as $key => $mod ) {
+			if ( is_numeric( $key ) ) {
+				unset( $value[ $key ] );
+			}
+		}
+
 		return $value;
 	}
 
