@@ -34,21 +34,26 @@ class Customizer_Polylang {
 		$self = new self();
 
 		/**
-		 * Force "The language is set from content" (in Language->Settings->URL modifications)
+		 * We need to use this filter/actions only we are into the wp-customizer
 		 */
-		$options = get_option( 'polylang' );
-		if ( isset( $options['force_lang'] ) && 0 !== $options['force_lang'] ) {
-			$options['force_lang'] = 0;
-			update_option( 'polylang', $options );
-		}
-		/**
-		 * Disable detect browser language, will return default language instead.
-		 */
-		add_filter( 'pll_preferred_language', '__return_false' );
+		global $wp_customize;
+		if ( isset( $wp_customize ) ) {
+			/**
+			 * Disable temporarily force_lang option
+			 */
+			$options = get_option( 'polylang' );
+			if ( isset( $options['force_lang'] ) && 0 !== $options['force_lang'] ) {
+				$options['force_lang'] = 0;
+			}
+			/**
+			 * Disable detect browser language, will return default language instead.
+			 */
+			add_filter( 'pll_preferred_language', '__return_false' );
 
-		\add_action( 'customize_controls_enqueue_scripts', [ $self, 'add_lang_to_customizer_previewer' ], 9 );
-		\add_action( 'wp_before_admin_bar_render', [ $self, 'on_wp_before_admin_bar_render' ], 100 );
-		\add_action( 'admin_menu', [ $self, 'on_admin_menu' ], 100 );
+			\add_action( 'customize_controls_enqueue_scripts', [ $self, 'add_lang_to_customizer_previewer' ], 9 );
+			\add_action( 'wp_before_admin_bar_render', [ $self, 'on_wp_before_admin_bar_render' ], 100 );
+			\add_action( 'admin_menu', [ $self, 'on_admin_menu' ], 100 );
+		}
 
 		$theme_stylesheet_slug = get_option( 'stylesheet' );
 		$option_types          = [ 'blogname', 'blogdescription', 'site_icon' ];
